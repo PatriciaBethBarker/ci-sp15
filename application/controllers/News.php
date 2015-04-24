@@ -7,12 +7,14 @@ class News extends CI_Controller {
                 $this->load->model('news_model');
         }
 
-     
+        
         public function index()
-        {
+        {       //adds rss///////////////////////
+                $request= 'http://www.smashingmagazine.com/feed/';
+                $data['xml'] = $this->news_model->get_rss($request);
+                ////////////////////////////////
                 $data['news'] = $this->news_model->get_news();
                 $data['title'] = 'News archive';
-
                 $this->load->view('templates/header', $data);
                 $this->load->view('news/index', $data);
                 $this->load->view('templates/footer');
@@ -28,7 +30,6 @@ class News extends CI_Controller {
                 }
 
                 $data['title'] = $data['news_item']['title'];
-
                 $this->load->view('templates/header', $data);
                 $this->load->view('news/view', $data);
                 $this->load->view('templates/footer');
@@ -56,5 +57,5 @@ class News extends CI_Controller {
                 $this->load->view('news/success');
             }
         }
-    
+          
 }

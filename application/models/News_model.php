@@ -15,7 +15,15 @@ class News_model extends CI_Model {
 
                 $query = $this->db->get_where('news', array('slug' => $slug));
                 return $query->row_array();
+                
         }
+        //////For RSS///////////////////////////////
+        public function get_rss($request)
+        {
+            $response = file_get_contents($request);
+            return simplexml_load_string($response);
+        }
+        ////////////////////////////////////////////
         public function set_news()
         {
             $this->load->helper('url');
