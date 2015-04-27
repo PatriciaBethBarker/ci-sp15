@@ -30,4 +30,12 @@ class News_model extends CI_Model {
 
             return $this->db->insert('news', $data);
         }
-}#end of the news model
+        /*
+        public function get_rss($request)
+        {
+            $request= 'http://rss.news.yahoo.com/rss/software';
+            $response = file_get_contents($request);
+            return simplexml_load_string($response);
+        }*/
+}
+#end of the news model

@@ -1,16 +1,14 @@
 <?php
 class Rss_model extends CI_Model {
 
-        public function __construct()
+        public function get_rss()
         {
-                $this->load->database();
-        }
-
-        public function get_rss($request)
-        {
-            $response = file_get_contents($request);
-            return simplexml_load_string($response);
+        	$request= 'http://www.smashingmagazine.com/feed/';
+            $response= file_get_contents($request);
+            $xml= new SimpleXMLElement($response);
+            return $xml;
         }
 
       
-}#end of the news model
+}#end of the rss model
+

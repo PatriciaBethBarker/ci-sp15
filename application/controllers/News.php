@@ -59,5 +59,13 @@ class News extends CI_Controller {
                 $this->load->view('news/success');
             }
         }
+
+        /*
+        public function get_rss(){
+            $this->load->model('News_model');
+            $data['xml'] = $this->News_model->get_rss($request);
+            $this->load->view('news/feed');
+        }
+*/
     
 }

@@ -5,18 +5,16 @@ class Rss extends CI_Controller {
         {
                 parent::__construct();
                 $this->load->model('rss_model');
+                $this->config->set_item('banner', 'News Banner');
         }
 
         
         public function index()
         {       //adds rss///////////////////////
-                $request= 'http://www.smashingmagazine.com/feed/';
-                $data['xml'] = $this->news_model->get_rss($request);
+                $data['rss'] = $this->rss_model->get_rss();
                 ////////////////////////////////
                 $data['title'] = 'RSS Feed';
-                $this->load->view('templates/header', $data);
-                $this->load->view('news/feed', $data);
-                $this->load->view('templates/footer');
+                $this->load->view('rss/index', $data);
         }
           
 }
