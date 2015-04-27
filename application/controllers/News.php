@@ -13,12 +13,8 @@ class News extends CI_Controller {
         {
                 $data['news'] = $this->news_model->get_news();
                 $data['title'] = 'News archive';
-            
-                //$this->config->set_item('banner','News Banner');
-
-                //$this->load->view('templates/header', $data);
                 $this->load->view('news/index', $data);
-                //$this->load->view('templates/footer');
+                
         }
 
         public function view($slug = NULL)
@@ -58,14 +54,5 @@ class News extends CI_Controller {
                 $this->news_model->set_news();
                 $this->load->view('news/success');
             }
-        }
-
-        /*
-        public function get_rss(){
-            $this->load->model('News_model');
-            $data['xml'] = $this->News_model->get_rss($request);
-            $this->load->view('news/feed');
-        }
-*/
-    
+        }    
 }
